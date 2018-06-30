@@ -1,0 +1,41 @@
+using System;
+using System.Numerics;
+using System.Text;
+
+class Program
+{
+    static void Main()
+    {
+        string num = Console.ReadLine();
+        int multiplier = int.Parse(Console.ReadLine());
+
+        if (multiplier == 0)
+        {
+            Console.WriteLine(0);
+            Environment.Exit(0);
+        }
+
+        StringBuilder result = new StringBuilder();
+        int reminder = 0;
+        for (int i = num.Length - 1; i >= 0; i--)
+        {
+            int digit = int.Parse(num[i].ToString());
+            
+            int currentSum = digit * multiplier + reminder;
+            reminder = currentSum / 10;
+                        
+            result.Append(currentSum % 10);
+        }
+
+        result.Append(reminder);
+
+        string output = result.ToString().TrimEnd('0');
+
+        for (int i = output.Length - 1; i >= 0; i--)
+        {
+            Console.Write(output[i]);
+        }
+
+        
+    }
+}
